@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package greet.v1;
+
+option go_package = "github.com/adev73/goreactstreaminggrpc/internal/gen/greet/v1;greetv1";
+
+message GreetRequest {
+  string session_id = 1;
+  string name = 2;
+  bool end_session = 3;
+}
+
+message GreetResponse {
+  bool confirmed = 2;
+}
+
+message GreetingsRequest {}
+message GreetingsResponse {
+  string session_id = 1;
+  string greeting = 2;
+  bool end_session = 3;  
+}
+
+service GreetService {
+  rpc Greet(GreetRequest) returns (GreetResponse) {}
+  rpc Greetings(GreetingsRequest) returns (stream GreetingsResponse) {}
+}

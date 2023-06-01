@@ -1,0 +1,14 @@
+version: v1
+plugins:
+  - plugin: go
+    out: internal/gen
+    opt: paths=source_relative
+  - plugin: connect-go
+    out: internal/gen
+    opt: paths=source_relative
+  - plugin: buf.build/bufbuild/es
+    out: react-app/src/gen
+    opt: target=js+dts
+  - plugin: buf.build/bufbuild/connect-es
+    out: react-app/src/gen
+    opt: target=js+dts
